@@ -116,6 +116,11 @@
   ## Trustzone enable (to make the transition from EL3 to NS EL2 in ArmPlatformPkg/Sec)
   gArmTokenSpaceGuid.PcdTrustzoneSupport|TRUE
 
+!if $(ARM_STANDALONE_MM_ENABLE) == TRUE
+  gArmTokenSpaceGuid.PcdMmBufferBase|0xFF600000
+  gArmTokenSpaceGuid.PcdMmBufferSize|0x10000
+!endif
+
   #
   # ARM PrimeCell
   #
@@ -226,6 +231,12 @@
   MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf
 !endif
   MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf
+
+!if $(ARM_STANDALONE_MM_ENABLE) == TRUE
+  # Standalone MM Support
+  ArmPkg/Drivers/MmCommunicationDxe/MmCommunication.inf
+!endif
+
   MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf {
     <LibraryClasses>
       NULL|EmbeddedPkg/Library/NvVarStoreFormattedLib/NvVarStoreFormattedLib.inf
