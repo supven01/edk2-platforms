@@ -235,6 +235,7 @@
 !if $(ARM_STANDALONE_MM_ENABLE) == TRUE
   # Standalone MM Support
   ArmPkg/Drivers/MmCommunicationDxe/MmCommunication.inf
+  StandaloneMmPkg/Application/MmCommTestApp/MmCommTest.inf
 !endif
 
   MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf {
